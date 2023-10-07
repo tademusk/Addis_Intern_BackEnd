@@ -14,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api\V1'], function() {
-    Route::apiResource('music',MusicController::class);
+Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], function () {
+    // Retrieve a list of music
+    Route::get('music', 'MusicController@index');
+
+    // Create a new music record
+    Route::post('music', 'MusicController@store');
+
+    // Retrieve a specific music record by its ID
+    Route::get('music/{id}', 'MusicController@show');
+
+    // Update a specific music record by its ID
+    Route::put('music/{id}', 'MusicController@update');
+
+    // Delete a specific music record by its ID
+    Route::delete('music/{id}', 'MusicController@destroy');
 });
+
